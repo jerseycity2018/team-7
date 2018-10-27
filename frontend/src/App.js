@@ -26,7 +26,7 @@ class App extends Component {
     super(props);
     this.state = {
       isLoaded: false,
-      center: [40.728793, -74.03541799999999],
+      center: [90.728793, -74.03541799999999],
       address: "",
       users: [],
       points: []
@@ -36,6 +36,9 @@ class App extends Component {
   }
 
   componentDidMount() {
+    if("geolocation" in navigator) {
+      navigator.geolocation.getCurrentPosition(pos => this.setState({ center: [pos.coords.latitude, pos.coords.longitude] }))
+    }
     setInterval(() => {
       fetch("http://localhost:3000/points/readall", {
             method: 'GET',
