@@ -17,7 +17,7 @@ import {
     geocodeByPlaceId,
     getLatLng,
 } from 'react-places-autocomplete';
-import Leaderboard from './Leaderboard';
+import Leaderboard from './leaderboard';
 import Profile from './Profile';
 // import FilterBar from './FilterBar';
 
@@ -43,7 +43,7 @@ class App extends Component {
   render() {
     const mapComp = (
       <div>
-        
+
       </div>
     );
     const options = [
@@ -70,7 +70,7 @@ class App extends Component {
         { /*<FilterBar/>*/}
         <Router>
           <div className="contents" >
-            <NavBarNPM 
+            <NavBarNPM
               pages={options}
             >
             </NavBarNPM>
