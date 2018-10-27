@@ -7,7 +7,7 @@ import Dot from './Dot';
  
 class Map extends Component {
     static defaultProps = {
-        center: [59.93, 30.33],
+        center: [40.728793, -74.03541799999999],
         data: {},
         zoom: 11
     };

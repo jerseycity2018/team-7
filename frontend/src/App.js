@@ -26,7 +26,7 @@ class App extends Component {
     super(props);
     this.state = {
       isLoaded: false,
-      center: [59.93, 30.33],
+      center: [40.728793, -74.03541799999999],
       address: "",
       users: [],
       points: []
@@ -58,6 +58,19 @@ class App extends Component {
     }, 1500)
   }
 
+  getGeoLocation(){
+    return new Promise((resolve, reject) => {
+        if ("geolocation" in navigator) {
+            navigator.geolocation.getCurrentPosition(position => {
+                resolve({lat: position.coords.latitude, lng: position.coords.longitude});
+            }, error => reject(error));
+        }else{
+            reject('Not Supported');
+        }
+    });
+  }
+
+
   onSearch = searchTerm => {
     this.setState({ address: searchTerm });
     console.log(this.state.address);
@@ -72,13 +85,13 @@ class App extends Component {
 
   render() {
     const options = [
-      '/',
-      'leaderboard',
-      'profile'
+      'Home',
+      'Leaderboard',
+      'Profile'
     ]
     return (
       <div className="App">
-        <header className="">
+        <header className="toplogo">
           <img src={logo} className="App-logo" alt="logo" />
           <p>
             <code id="title"> Good Deeds</code>
@@ -91,9 +104,8 @@ class App extends Component {
               pages={options}
             >
             </NavBarNPM>
-            <Route exact path='/' render={props =>
+            <Route exact path='/Home' render={props =>
               <div>
-
                 <SearchMap searchTerm={this.address} onSearch={this.onSearch} handleCenter={this.handleCenter}/>
               { this.state.isLoaded ? 
                 <Map center={this.state.center} data={this.state.points}/>

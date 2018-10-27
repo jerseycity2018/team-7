@@ -62,6 +62,8 @@ class Dot extends Component {
                                     </a>
                                     <p id="body">
                                         {this.props.body}
+                                        <br/>
+                                        {this.props.quantity}
                                     </p>
                                 </div>
                             </div> 
