@@ -2,6 +2,17 @@ import React, { Component } from 'react';
 import './CreateDots.css'
 
 class CreateDots extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+
+        }
+    }
+
+    postData() {
+    }
+    
+
     render() {
         return (
             <div class="create-dots">

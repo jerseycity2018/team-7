@@ -12,12 +12,7 @@ import SocialMedia from './SocialMedia'
 import Geocode from "react-geocode";
 import './App.css';
 import SearchMap from './SearchMap';
-import {
-    geocodeByAddress,
-    geocodeByPlaceId,
-    getLatLng,
-} from 'react-places-autocomplete';
-import Leaderboard from './leaderboard';
+import Leaderboard from './Leaderboard';
 import Profile from './Profile';
 import CreateDots from './CreateDots';
 // import FilterBar from './FilterBar';
@@ -27,8 +22,32 @@ class App extends Component {
     super(props);
     this.state = {
       center: [59.93, 30.33],
-      address: ""
+      address: "",
+      users: [],
+      points: []
     }
+
+    this.geolocRef = React.createRef();
+  }
+
+  componentDidMount() {
+    fetch("http://localhost:3000/points/readall", {
+            method: 'GET',
+        })
+        .then(res => res.json())
+        .then((data => {
+            this.setState({ points: data })
+            console.log(this.state.points)
+        }))
+
+    fetch("http://localhost:3000/user/readall", {
+            method: 'GET',
+        })
+        .then(res => res.json())
+        .then((data => {
+            this.setState({ users: data })
+            console.log(this.state.users)
+        }))
   }
 
   onSearch = searchTerm => {
@@ -54,6 +73,7 @@ class App extends Component {
     ]
     return (
       <div className="App">
+        <geolocated/>
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <p>
@@ -70,12 +90,14 @@ class App extends Component {
             <Route exact path='/' render={props =>
               <div>
                 <SearchMap searchTerm={this.address} onSearch={this.onSearch} handleCenter={this.handleCenter}/>
-                <Map center={this.state.center}/>
+                <Map center={this.state.center} data={this.state.points}/>
                 <CreateDots/>
                 <SocialMedia/>
               </div>
             }/>
-            <Route path='/leaderboard' component={Leaderboard}/>
+            <Route exact path='/leaderboard' render={props =>
+              <Leaderboard people={this.state.users}/>
+            }/>
             <Route path='/profile' component={Profile}/>
           </div>
         </Router>

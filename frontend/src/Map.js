@@ -8,6 +8,7 @@ import Dot from './Dot';
 class Map extends Component {
     static defaultProps = {
         center: [59.93, 30.33],
+        data: {},
         zoom: 11
     };
 
@@ -15,11 +16,12 @@ class Map extends Component {
         super(props);
         this.state = {
             address: "",
+            data: this.props.data
         }
     }
 
     componentDidMount() {
-        console.log(data)
+        
     }
 
   render() {
@@ -33,7 +35,7 @@ class Map extends Component {
           defaultZoom={this.props.zoom}
         >
           {
-              data.map((item) => (
+              this.state.data.map((item) => (
                     <Dot
                     lat={item.lat}
                     lng={item.lng}
