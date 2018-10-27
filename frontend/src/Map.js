@@ -16,7 +16,8 @@ static defaultProps = {
   render() {
     return (
       // Important! Always set the container height explicitly
-      <div style={{ height: '100vh', width: '100%' }}>
+      <center>
+      <div style={{height: '50vh', width: '95%' }}>
         <GoogleMapReact
           bootstrapURLKeys={{ key: "AIzaSyBHTgjz-3o0gmXXe_i7bxDKJ5MH6Ai4jjQ" }}
           defaultCenter={this.props.center}
@@ -29,6 +30,7 @@ static defaultProps = {
           />
         </GoogleMapReact>
       </div>
+      </center>
     );
   }
 }
