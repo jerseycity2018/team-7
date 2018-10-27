@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import Map from './Map';
+import NavBar from './NavBar'
+import SocialMedia from './SocialMedia'
 import './App.css';
 
 class App extends Component {
@@ -8,6 +10,7 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
+          <NavBar/>
           <img src={logo} className="App-logo" alt="logo" />
           <p>
             Edit <code>src/App.js</code> and save to reload.
@@ -23,6 +26,7 @@ class App extends Component {
         </header>
         <div className="contents">
           <Map/>
+          <SocialMedia/>
         </div>
       </div>
     );
