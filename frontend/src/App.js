@@ -19,6 +19,7 @@ import {
 } from 'react-places-autocomplete';
 import Leaderboard from './Leaderboard';
 import Profile from './Profile';
+import CreateDots from './CreateDots';
 // import FilterBar from './FilterBar';
 
 class App extends Component {
@@ -58,14 +59,6 @@ class App extends Component {
           <p>
             <code> Good Deeds</code>
           </p>
-            <a
-              className="App-link"
-              href="https://reactjs.org"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-            Learn React
-          </a>
         </header>
         { /*<FilterBar/>*/}
         <Router>
@@ -78,6 +71,7 @@ class App extends Component {
               <div>
                 <SearchMap searchTerm={this.address} onSearch={this.onSearch} handleCenter={this.handleCenter}/>
                 <Map center={this.state.center}/>
+                <CreateDots/>
                 <SocialMedia/>
               </div>
             }/>

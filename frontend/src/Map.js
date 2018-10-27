@@ -18,6 +18,10 @@ class Map extends Component {
         }
     }
 
+    componentDidMount() {
+        
+    }
+
   render() {
     return (
       // Important! Always set the container height explicitly
@@ -25,7 +29,7 @@ class Map extends Component {
       <div style={{height: '50vh', width: '95%' }}>
         <GoogleMapReact
           bootstrapURLKeys={{ key: config.maps }}
-          defaultCenter={this.props.center}
+          center={this.props.center}
           defaultZoom={this.props.zoom}
         >
           <Dot
