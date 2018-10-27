@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
 import StickyFooter from 'react-sticky-footer';
-import SearchBar from './SearchBar';
 import logo from './logo.svg';
-import NavBar from './NavBar'
+import {
+  BrowserRouter as Router,
+  Route,
+} from 'react-router-dom'
+import NavBarNPM from 'reactjs-navigation'
 import Map from './Map';
 import SocialMedia from './SocialMedia'
 import Geocode from "react-geocode";
@@ -35,10 +38,14 @@ class App extends Component {
   }
 
   render() {
+    const options = [
+      '/',
+      'leaderboard',
+      'profile'
+    ]
     return (
       <div className="App">
         <header className="App-header">
-          <NavBar/>
           <img src={logo} className="App-logo" alt="logo" />
           <p>
             <code> Good Deeds</code>
@@ -53,24 +60,31 @@ class App extends Component {
           </a>
         </header>
         { /*<FilterBar/>*/}
-        <div className="contents">
-          <SearchMap searchTerm={this.address} onSearch={this.onSearch} handleCenter={this.handleCenter}/>
-          <Map center={this.state.center}/>
-          <SocialMedia/>
-        </div>
+        <Router>
+          <div className="contents" >
+            <NavBarNPM 
+              pages={options}
+            >
+            </NavBarNPM>
+            <SearchMap searchTerm={this.address} onSearch={this.onSearch} handleCenter={this.handleCenter}/>
+            <Map center={this.state.center}/>
+            <SocialMedia/>
+          </div>
+
+        </Router>
         <StickyFooter
-        bottomThreshold={50}
-        normalStyles={{
-          backgroundColor: "#999999",
-          padding: "2rem"
-        }}
-        stickyStyles={{
-          backgroundColor: "rgba(255,255,255,.8)",
-          padding: "2rem"
+          bottomThreshold={50}
+          normalStyles={{
+            backgroundColor: "#999999",
+            padding: "2rem"
           }}
-          >
-          Add any footer markup here
-          </StickyFooter>
+          stickyStyles={{
+            backgroundColor: "rgba(255,255,255,.8)",
+            padding: "2rem"
+            }}
+            >
+            Add any footer markup here
+        </StickyFooter>
       </div>
     );
   }
