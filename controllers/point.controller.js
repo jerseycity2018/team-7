@@ -27,17 +27,9 @@ exports.pointCreate = function (req, res) {
 };
 
 exports.readPoint = function (req, res, next) {
-	Point.findById(req.params.id, function (err, point) {
-		if(err) return next(err);
-		res.send(point);
+	Point.find().then((points) => {
+		res.send(points)
 	})
-};
-
-exports.readAllPoints = function (req, res) {
-	mongoose.model('Point').find({}, function (err, points) {
-		if(err) return next(err);
-		res.send(points);
-	});
 };
 
 exports.updatePoint = function (req, res) {
