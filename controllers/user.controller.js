@@ -4,7 +4,7 @@ exports.test = function (req, res) {
     res.send('Testing User Controller');
 };
 
-exports.user_create = function (req, res) {
+exports.create = function (req, res) {
     var user = new User(
         {
             userID: req.body.userID,
@@ -20,4 +20,24 @@ exports.user_create = function (req, res) {
         }
         res.send('User created successfully')
     })
+};
+
+exports.readUsers = function (req, res, next) {
+	User.find().then((users) => {
+		res.send(users)
+	})
+};
+
+exports.updateUser = function (req, res) {
+	User.findByIdAndUpdate(req.params.id, {$set: req.body}, function (err, point){
+		if(err) return next(err);
+		res.send('User Updated!')
+	});
+};
+
+exports.deleteUser = function (req, res) {
+	User.findByIdAndRemove(req.params.id, function (err){
+		if(err) return next(err);
+		res.send('User Deleted!');
+	})
 };
