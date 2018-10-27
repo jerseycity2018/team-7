@@ -1,6 +1,4 @@
 # Code for Good (2018 Jersey City, NJ) project!
-
-## Screenshots
 ![](https://i.imgur.com/t60R5Sg.jpg)
 ![](https://i.imgur.com/aGxqH6R.png)
 
@@ -27,3 +25,5 @@ mLabs (remote MongoDB instance)
 ```
 2. npm start
 ```
+
+MongoDB credentials are stored in a separate, untracked file (`config.js`).
