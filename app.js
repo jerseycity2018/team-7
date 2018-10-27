@@ -39,5 +39,5 @@ app.use('/points', Point);
 app.use('/user', User);
 
 app.listen(3000, function() {
-	console.log('Example app listening on port 3000!');
+	console.log('Good Deeds up and running on port 3000!');
 });
