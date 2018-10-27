@@ -1,24 +1,30 @@
 import React, { Component } from 'react';
 import GoogleMapReact from 'google-map-react';
+import config from './config.json';
+import data from './data';
+import axios from 'axios';
 import Dot from './Dot';
  
-const AnyReactComponent = ({ text }) => <div>{text}</div>;
- 
 class Map extends Component {
-static defaultProps = {
-    center: {
-        lat: 59.95,
-        lng: 30.33
-    },
-    zoom: 11
-};
- 
+    static defaultProps = {
+        center: [59.93, 30.33],
+        zoom: 11
+    };
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            address: "",
+        }
+    }
+
   render() {
     return (
       // Important! Always set the container height explicitly
       <div style={{ height: '100vh', width: '100%' }}>
+        
         <GoogleMapReact
-          bootstrapURLKeys={{ key: "AIzaSyBHTgjz-3o0gmXXe_i7bxDKJ5MH6Ai4jjQ" }}
+          bootstrapURLKeys={{ key: config.maps }}
           defaultCenter={this.props.center}
           defaultZoom={this.props.zoom}
         >
@@ -28,7 +34,9 @@ static defaultProps = {
             text={'Miguel Acero'}
           />
         </GoogleMapReact>
+
       </div>
+      </center>
     );
   }
 }

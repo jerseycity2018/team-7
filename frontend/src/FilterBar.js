@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class SearchBar extends Component {
+class FilterBar extends Component {
     onSearch = e => {
         const { onSearch } = this.props;
         onSearch(e.target.value);
@@ -12,7 +12,7 @@ class SearchBar extends Component {
             <div>
                 <div class="searchBox">
                     <div class="searchContainer">
-                        <span class="icon-s"><i class="fas fa-search"></i></span>
+                        <span class="icon-s"><i class="fas fa-filter"></i></span>
                         <input
                             type="search" 
                             id="search" 
@@ -28,4 +28,4 @@ class SearchBar extends Component {
     }
 }
 
-export default SearchBar;
+export default FilterBar;

@@ -4,7 +4,7 @@ exports.test = function (req, res) {
     res.send('Testing User Controller');
 };
 
-exports.product_create = function (req, res) {
+exports.user_create = function (req, res) {
     var user = new User(
         {
             userID: req.body.userID,

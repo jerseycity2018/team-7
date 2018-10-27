@@ -5,16 +5,34 @@ import logo from './logo.svg';
 import NavBar from './NavBar'
 import Map from './Map';
 import SocialMedia from './SocialMedia'
+import Geocode from "react-geocode";
 import './App.css';
+import SearchMap from './SearchMap';
+import {
+    geocodeByAddress,
+    geocodeByPlaceId,
+    getLatLng,
+} from 'react-places-autocomplete';
+// import FilterBar from './FilterBar';
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      searchTerm: "",
+      center: [59.93, 30.33],
+      address: ""
     }
   }
-  
+
+  onSearch = searchTerm => {
+    this.setState({ address: searchTerm });
+    console.log(this.state.address);
+  }
+
+  handleCenter = center => {
+    this.setState({ center: center });
+    console.log(center);
+  }
 
   render() {
     return (
@@ -23,7 +41,7 @@ class App extends Component {
           <NavBar/>
           <img src={logo} className="App-logo" alt="logo" />
           <p>
-            Edit <code>src/App.js</code> and save to reload.
+            <code> Good Deeds</code>
           </p>
             <a
               className="App-link"
@@ -34,9 +52,10 @@ class App extends Component {
             Learn React
           </a>
         </header>
+        { /*<FilterBar/>*/}
         <div className="contents">
-          <SearchBar/>
-          <Map/>
+          <SearchMap searchTerm={this.address} onSearch={this.onSearch} handleCenter={this.handleCenter}/>
+          <Map center={this.state.center}/>
           <SocialMedia/>
         </div>
         <StickyFooter

@@ -1,8 +1,12 @@
 .panel {
-    width: 200px;
-    height: 100px;
+    width: 300px;
+    height: 230px;
     background: gray;
     margin-top: 10px;
+}
+
+.panelContent {
+    padding: 10px;
 }
 
 .example-enter {
@@ -25,7 +29,13 @@
 }
 
 #name {
-    font-weight: 100;
     color: black;
     background-color: #0000;
+}
+
+#img {
+    height: 50%;
+    width: 50%;
+    max-width: 400px;
+    max-height: 500px;
 }
