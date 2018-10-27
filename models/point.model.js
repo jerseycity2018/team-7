@@ -11,7 +11,7 @@ let pointSchema = new Schema({
 	category: {type: String, required: true},
 	upVotes: {type: Number, required: true},
 	time: {type: String, required: true},
-	UID: {type: Number, required: true},
+	UID: {type: String, required: true},
 });
 
 //Export Model
