@@ -1,5 +1,5 @@
-# config
-config.json
+# macOS
+.DS_Store
 
 # Logs
 logs
