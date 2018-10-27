@@ -8,6 +8,7 @@
     "react-addons-css-transition-group": "^15.6.2",
     "react-dom": "^16.6.0",
     "react-scripts": "2.0.5",
+    "react-sticky-footer": "0.1.0-rc3",
     "react-transition-group": "^1.2.1"
   },
   "scripts": {
