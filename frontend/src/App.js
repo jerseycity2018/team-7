@@ -4,6 +4,7 @@ import logo from './logo.svg';
 import {
   BrowserRouter as Router,
   Route,
+  Link
 } from 'react-router-dom'
 import NavBarNPM from 'reactjs-navigation'
 import Map from './Map';
@@ -16,6 +17,8 @@ import {
     geocodeByPlaceId,
     getLatLng,
 } from 'react-places-autocomplete';
+import Leaderboard from './Leaderboard';
+import Profile from './Profile';
 // import FilterBar from './FilterBar';
 
 class App extends Component {
@@ -38,6 +41,11 @@ class App extends Component {
   }
 
   render() {
+    const mapComp = (
+      <div>
+        
+      </div>
+    );
     const options = [
       '/',
       'leaderboard',
@@ -66,11 +74,16 @@ class App extends Component {
               pages={options}
             >
             </NavBarNPM>
-            <SearchMap searchTerm={this.address} onSearch={this.onSearch} handleCenter={this.handleCenter}/>
-            <Map center={this.state.center}/>
-            <SocialMedia/>
+            <Route exact path='/' render={props =>
+              <div>
+                <SearchMap searchTerm={this.address} onSearch={this.onSearch} handleCenter={this.handleCenter}/>
+                <Map center={this.state.center}/>
+                <SocialMedia/>
+              </div>
+            }/>
+            <Route path='/leaderboard' component={Leaderboard}/>
+            <Route path='/profile' component={Profile}/>
           </div>
-
         </Router>
         <StickyFooter
           bottomThreshold={50}

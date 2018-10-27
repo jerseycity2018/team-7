@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 
-class Leaderboard extends Component {
+class Profile extends Component {
     render() {
         return (
             <div>
-                Leaderboard
+                Profile
             </div>
         );
     }
 }
 
-export default Leaderboard;
+export default Profile;
