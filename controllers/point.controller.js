@@ -26,7 +26,7 @@ exports.pointCreate = function (req, res) {
 	})
 };
 
-exports.readPoint = function (req, res) {
+exports.readPoint = function (req, res, next) {
 	Point.findById(req.params.id, function (err, point) {
 		if(err) return next(err);
 		res.send(point);
