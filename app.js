@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 var app = express();
 
 const Point = require('./routes/point.route');
+const User = require('./routes/user.route');
 
 app.get('/', function(req, res) {
 	res.send('Hello World!');
@@ -16,8 +17,8 @@ app.get('/leaderboard', function(req, res) {
 	res.send('Leaderboard:');
 });
 
-//app.get('/point', Point);
 app.use('/points', Point);
+app.use('/user', User);
 
 app.listen(3000, function() {
 	console.log('Example app listening on port 3000!');
