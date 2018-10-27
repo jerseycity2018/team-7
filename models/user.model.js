@@ -9,6 +9,7 @@ let userSchema = new Schema({
     profile_pic: {type: String, required: false},
     twitter_handle: {type: String, required: false},
     lbs_recycled: {type: Number, required: false},
+    upVotes: {type: Number, required: true},
 });
 
 //Export Model
