@@ -7,5 +7,10 @@ const pointController = require('../controllers/point.controller');
 router.get('/test', pointController.test);
 //Create Point
 router.post('/create', pointController.pointCreate);
+//Read Single Point
+router.get('/:id', pointController.readPoint);
+//Update Point
+router.put('/:id/update', pointController.updatePoint);
+router.delete('/:id/delete', pointController.deletePoint)
 
 module.exports = router;

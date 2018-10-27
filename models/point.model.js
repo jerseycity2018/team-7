@@ -8,6 +8,7 @@ let pointSchema = new Schema({
 	img: {type: String, required: false},
 	title: {type: String, required: true},
 	body: {type: String, required: true},
+	category: {type: String, required: true},
 	upVotes: {type: Number, required: true},
 	time: {type: String, required: true},
 	UID: {type: Number, required: true},
