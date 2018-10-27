@@ -7,7 +7,8 @@ class Dot extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            visible: false
+            visible: false,
+            upvotes: 0
         }
         this.handleClick = this.handleClick.bind(this)
     };
@@ -15,9 +16,15 @@ class Dot extends Component {
     handleClick() {
         this.setState({ visible: ! this.state.visible });
     }
+
+    componentDidMount() {
+        this.setState({ upvotes: this.props.upvotes})
+        console.log(`this.props.upvotes: ${this.props.upvotes}`)
+    }
     
     upVote() {
-        alert("upvoted")
+        let newVal = this.state.upvotes + 1;
+        this.setState({ upvotes: newVal })
     }
 
     render() {
@@ -51,7 +58,7 @@ class Dot extends Component {
                                     <img id="img" src={this.props.img}/>
                                     <br/>
                                     <a onClick={this.upVote}>
-                                        <i class="fas fa-arrow-up"> upvotes: {this.props.upVotes} </i>
+                                        <i class="fas fa-arrow-up"> upvotes: {this.state.upvotes} </i>
                                     </a>
                                     <p id="body">
                                         {this.props.body}

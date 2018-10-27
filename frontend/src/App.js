@@ -9,13 +9,16 @@ import {
 import NavBarNPM from 'reactjs-navigation'
 import Map from './Map';
 import SocialMedia from './SocialMedia'
-import Geocode from "react-geocode";
 import './App.css';
 import SearchMap from './SearchMap';
 import Leaderboard from './Leaderboard';
+import './Leaderboard.css';
 import Profile from './Profile';
 import CreateDots from './CreateDots';
 import Loader from 'react-loader-spinner';
+import Location from './Location';
+import {geolocated} from 'react-geolocated';
+import { white } from 'material-ui/styles/colors';
 // import FilterBar from './FilterBar';
 
 class App extends Component {
@@ -62,15 +65,12 @@ class App extends Component {
 
   handleCenter = center => {
     this.setState({ center: center });
+    document.getElementById("longi").value = center[1];
+    document.getElementById("lati").value = center[0];
     console.log(center);
   }
 
   render() {
-    const mapComp = (
-      <div>
-
-      </div>
-    );
     const options = [
       '/',
       'leaderboard',
@@ -78,10 +78,10 @@ class App extends Component {
     ]
     return (
       <div className="App">
-        <header className="App-header">
+        <header className="">
           <img src={logo} className="App-logo" alt="logo" />
           <p>
-            <code> Good Deeds</code>
+            <code id="title"> Good Deeds</code>
           </p>
         </header>
         { /*<FilterBar/>*/}
@@ -117,7 +117,7 @@ class App extends Component {
         <StickyFooter
           bottomThreshold={50}
           normalStyles={{
-            backgroundColor: "#999999",
+            backgroundColor: "#555555",
             padding: "2rem"
           }}
           stickyStyles={{
@@ -125,7 +125,7 @@ class App extends Component {
             padding: "2rem"
             }}
             >
-            Add any footer markup here
+              Made with 💖 by Team 7
         </StickyFooter>
       </div>
     );

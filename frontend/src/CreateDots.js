@@ -19,7 +19,7 @@ class CreateDots extends Component {
     postData = e => {
         console.log(this.state.name)
         console.log(`this.state: ${this.state}`)
-        const dat =`lat=${this.state.lat}&lng=${this.state.lng}&name=${this.state.name}&quantity=${this.state.quantity}&img=https%3A%2F%2Fr.hswstatic.com%2Fw_907%2Fgif%2Fcomposting-sysk.jpg&title=${this.state.title}&body=${this.state.description}&category=${this.state.category}&upVotes=4&time=7%3A50am&UID=00MP4L00MP4`; 
+        const dat =`lat=${this.state.lat}&lng=${this.state.lng}&name=${this.state.name}&quantity=${this.state.quantity}&img=${encodeURIComponent(this.state.img)}&title=${this.state.title}&body=${this.state.description}&category=${this.state.category}&upVotes=4&time=7%3A50am&UID=00MP4L00MP4`; 
         console.log(dat)
         fetch('http://localhost:3000/points/create', {
             'method': "POST",
@@ -39,7 +39,10 @@ class CreateDots extends Component {
     }
 
     updateName = name => {
+        this.setState({ lng: encodeURIComponent(document.getElementById("longi").value) })
+        this.setState({ lat: encodeURIComponent(document.getElementById("lati").value)})
         this.setState({ name: encodeURIComponent(name.target.value) })
+        console.log(`lng: ${this.state.lng}`)
         console.log(`name: ${this.state.name}`)
     }
 
@@ -79,6 +82,7 @@ class CreateDots extends Component {
     }
 
     handleImage(reader) {
+        console.log(`reader: ${reader}`)
         const b64 = reader.split(',', 2)[1];
         console.log(b64)
     }
@@ -88,7 +92,6 @@ class CreateDots extends Component {
         let reader = new FileReader();
         let file = e.target.files[0];
         reader.onloadend = () => {
-          this.handleImage(reader.result);
           this.setState({
             img: reader.result
           })
@@ -113,10 +116,10 @@ class CreateDots extends Component {
                         <input onChange={this.updateName} type="title" class="form-control" placeholder="Name" required="required" />
                     </div>
                     <div class="form-group">
-                        <input onChange={this.updateLng} type="title" class="form-control" placeholder="Longitude" required="required" />
+                        <input id="longi" onChange={this.updateLng} type="title" class="form-control" placeholder="Longitude" required="required" />
                     </div>
                     <div class="form-group">
-                        <input onChange={this.updateLat} type="title" class="form-control" placeholder="Lattitude" required="required" />
+                        <input id="lati" onChange={this.updateLat} type="title" class="form-control" placeholder="Lattitude" required="required" />
                     </div>
                     <div class="form-group">
                         <input onChange={this.updateQuantity} type="title" class="form-control" placeholder="Quantity" required="required" />
@@ -127,14 +130,16 @@ class CreateDots extends Component {
                     <div class="form-group">
                         <input onChange={this.updateDescription} type="description" class="form-control" placeholder="Description" required="required" />
                     </div>
-                        <button onChange={(e) => this._fileHandle(e)} type="file" class="btn btn-primary btn-block">Upload Image</button>
+                        <input type='file' onChange={(e) => this._fileHandle(e)}/>
 
                     <div class="form-group">
                       <label for="exampleFormControlSelect1">Category</label>
                       <select onChange={this.updateCategory} class="form-control" id="category-form">
                         <option>Food Waste</option>
+                        <option>Water Conservation</option>
+                        <option>Energy Conservation</option>
                         <option>Agriculture</option>
-                        <option>Public Transport</option>
+                        <option>Transportation</option>
                         <option>Plant-based Diet</option>
                       </select>
                     </div>

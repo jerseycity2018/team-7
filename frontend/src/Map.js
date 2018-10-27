@@ -21,7 +21,16 @@ class Map extends Component {
     }
 
     componentDidMount() {
-        
+    setInterval(() => {
+        fetch("http://localhost:3000/points/readall", {
+            method: 'GET',
+        })
+        .then(res => res.json())
+        .then((data => {
+            this.setState({ data: data })
+            console.log(this.state.points)
+        }))
+    }, 1500)
     }
 
   render() {

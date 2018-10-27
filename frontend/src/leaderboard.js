@@ -35,17 +35,18 @@ export default class Leaderboard extends React.Component {
 
     return (
         <center>
+            <input
+                type="text"
+                placeholder="Filter names"
+                value={this.state.filterValue}
+                onChange={this.filterList}
+            />
             <div>
             <table className="leaderboard">
             <LeaderboardHeader />
             {rows}
             </table>
-            <input
-            type="text"
-            placeholder="Filter names"
-            value={this.state.filterValue}
-            onChange={this.filterList}
-            />
+            
         </div>
         </center>
       

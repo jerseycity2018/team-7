@@ -1,7 +1,7 @@
 import React from "react";
 
 const LeaderboardHeader = () => (
-  <tr className="table-head">
+  <tr className="table-head" >
     <th>
       <strong>#</strong>
     </th>

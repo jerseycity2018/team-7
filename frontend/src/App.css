@@ -35,3 +35,14 @@
   display: flex;
   justify-content: center;
 }
+#title {
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 70px;
+  background-image: linear-gradient(#FCFCFD,#FCFCFD);
+  background-size: 100% 1px; 
+  background-repeat: no-repeat;
+  background-position: 0 44%;
+  display:flex;
+  justify-content: center;
+  margin: 20px auto;
+}
