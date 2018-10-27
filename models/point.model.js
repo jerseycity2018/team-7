@@ -5,7 +5,7 @@ let pointSchema = new Schema({
 	lat: {type: Number, required: true},
 	lng: {type: Number, required: true},
 	name: {type: String, required: true},
-	quantity: {type: Number, required: false},
+	quantity: {type: String, required: false},
 	img: {type: String, required: false},
 	title: {type: String, required: true},
 	body: {type: String, required: true},
