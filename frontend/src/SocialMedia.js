@@ -6,7 +6,7 @@ class SocialMedia extends Component {
         return (
             <div>
                 <p>
-                    Social Media
+                    Share to social media!
                 </p>
                 <a class="resp-sharing-button__link" href="https://facebook.com/sharer/sharer.php?u=http%3A%2F%2Fsharingbuttons.io" target="_blank" aria-label="">
                   <div class="resp-sharing-button resp-sharing-button--facebook resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solidcircle">
