@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import GoogleMapReact from 'google-map-react';
+import Dot from './Dot';
  
 const AnyReactComponent = ({ text }) => <div>{text}</div>;
  
@@ -21,10 +22,10 @@ static defaultProps = {
           defaultCenter={this.props.center}
           defaultZoom={this.props.zoom}
         >
-          <AnyReactComponent
+          <Dot
             lat={59.955413}
             lng={30.337844}
-            text={'Miguel'}
+            text={'Miguel Acero'}
           />
         </GoogleMapReact>
       </div>
