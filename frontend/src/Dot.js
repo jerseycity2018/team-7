@@ -30,11 +30,19 @@ class Dot extends Component {
                             this.state.visible ? 
                             <div className='panel'> 
                                 <div className="panelContent">
+                                { /*
                                     <h1 id="title"> Recycled some plastic bottles </h1>
                                     <p id="time"> 9:28pm</p>
                                     <img id="img" src="https://cdn.images.express.co.uk/img/dynamic/130/590x/Recycle-851038.jpg"/>
                                     <p id="body">
                                         having fun recycling!
+                                    </p>
+                                */}
+                                    <h1 id="title"> {this.props.title} </h1>
+                                    <p id="time"> {this.props.time} </p>
+                                    <img id="img" src={this.props.img}/>
+                                    <p id="body">
+                                        {this.props.body}
                                     </p>
                                 </div>
                             </div> 
