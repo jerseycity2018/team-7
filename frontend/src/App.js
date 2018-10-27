@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import StickyFooter from 'react-sticky-footer';
-import SearchBar from './SearchBar';
 import logo from './logo.svg';
 import NavBar from './NavBar'
 import Map from './Map';

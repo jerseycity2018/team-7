@@ -21,6 +21,7 @@ class Map extends Component {
   render() {
     return (
       // Important! Always set the container height explicitly
+      <center>
       <div style={{ height: '100vh', width: '100%' }}>
         
         <GoogleMapReact
