@@ -6,9 +6,10 @@ exports.test = function (req, res) {
 
 exports.pointCreate = function (req, res) {
 	let point = new Point({
-		latitude: req.body.latitude,
-		longitude: req.body.longitude,
-		recycled: req.body.recycled,
+		lat: req.body.lat,
+		lng: req.body.lng,
+		name: req.body.name,
+		quantity: req.body.quantity,
 		img: req.body.img,
 		title: req.body.title,
 		body: req.body.body,

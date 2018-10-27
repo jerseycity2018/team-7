@@ -2,9 +2,10 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 let pointSchema = new Schema({
-	latitude: {type: Number, required: true},
-	longitude: {type: Number, required: true},
-	recycled: {type: Number, required: true},
+	lat: {type: Number, required: true},
+	lng: {type: Number, required: true},
+	name: {type: String, required: true},
+	quantity: {type: Number, required: false},
 	img: {type: String, required: false},
 	title: {type: String, required: true},
 	body: {type: String, required: true},
