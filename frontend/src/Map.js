@@ -37,6 +37,7 @@ class Map extends Component {
           {
               this.state.data.map((item) => (
                     <Dot
+                    upvotes={item.upVotes}
                     lat={item.lat}
                     lng={item.lng}
                     title={item.title}

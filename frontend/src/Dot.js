@@ -15,6 +15,10 @@ class Dot extends Component {
     handleClick() {
         this.setState({ visible: ! this.state.visible });
     }
+    
+    upVote() {
+        alert("upvoted")
+    }
 
     render() {
         return (
@@ -45,6 +49,10 @@ class Dot extends Component {
                                     }
                                     <p id="time"> {this.props.time} </p>
                                     <img id="img" src={this.props.img}/>
+                                    <br/>
+                                    <a onClick={this.upVote}>
+                                        <i class="fas fa-arrow-up"> upvotes: {this.props.upVotes} </i>
+                                    </a>
                                     <p id="body">
                                         {this.props.body}
                                     </p>

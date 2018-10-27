@@ -1,6 +1,6 @@
 .panel {
     width: 300px;
-    height: 230px;
+    height: 300px;
     background: gray;
     margin-top: 10px;
 }
@@ -21,6 +21,13 @@
 .example-leave.example-leave-active {
     height: 0px;
     -webkit-transition: height .3s ease;
+}
+
+#title {
+    font-size: 10px;
+}
+#category {
+    font-size: 12px;
 }
 
 #dot {

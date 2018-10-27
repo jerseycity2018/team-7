@@ -15,12 +15,14 @@ import SearchMap from './SearchMap';
 import Leaderboard from './Leaderboard';
 import Profile from './Profile';
 import CreateDots from './CreateDots';
+import Loader from 'react-loader-spinner';
 // import FilterBar from './FilterBar';
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      isLoaded: false,
       center: [59.93, 30.33],
       address: "",
       users: [],
@@ -31,23 +33,26 @@ class App extends Component {
   }
 
   componentDidMount() {
-    fetch("http://localhost:3000/points/readall", {
+    setInterval(() => {
+      fetch("http://localhost:3000/points/readall", {
             method: 'GET',
         })
         .then(res => res.json())
         .then((data => {
-            this.setState({ points: data })
+            this.setState({ points: data, isLoaded: true })
             console.log(this.state.points)
         }))
 
-    fetch("http://localhost:3000/user/readall", {
+      fetch("http://localhost:3000/user/readall", {
             method: 'GET',
         })
         .then(res => res.json())
         .then((data => {
-            this.setState({ users: data })
+            const sortedData = data.sort((a,b) => b.upVotes - a.upVotes);
+            this.setState({ users: sortedData })
             console.log(this.state.users)
         }))
+    }, 1500)
   }
 
   onSearch = searchTerm => {
@@ -73,7 +78,6 @@ class App extends Component {
     ]
     return (
       <div className="App">
-        <geolocated/>
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <p>
@@ -89,8 +93,17 @@ class App extends Component {
             </NavBarNPM>
             <Route exact path='/' render={props =>
               <div>
+
                 <SearchMap searchTerm={this.address} onSearch={this.onSearch} handleCenter={this.handleCenter}/>
+              { this.state.isLoaded ? 
                 <Map center={this.state.center} data={this.state.points}/>
+                 : 
+                <Loader 
+                type="Puff"
+                color="#00BFFF"
+                height="100"	
+                width="100"
+             /> }
                 <CreateDots/>
                 <SocialMedia/>
               </div>
