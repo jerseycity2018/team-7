@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import config from './config';
 import GoogleMapReact from 'google-map-react';
  
 const AnyReactComponent = ({ text }) => <div>{text}</div>;
@@ -17,7 +18,7 @@ static defaultProps = {
       // Important! Always set the container height explicitly
       <div style={{ height: '100vh', width: '100%' }}>
         <GoogleMapReact
-          bootstrapURLKeys={{ key: "AIzaSyBHTgjz-3o0gmXXe_i7bxDKJ5MH6Ai4jjQ" }}
+          bootstrapURLKeys={{ key: config.mapsApiKey }}
           defaultCenter={this.props.center}
           defaultZoom={this.props.zoom}
         >
