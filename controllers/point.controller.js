@@ -33,6 +33,13 @@ exports.readPoint = function (req, res) {
 	})
 };
 
+exports.readAllPoints = function (req, res) {
+	mongoose.model('Point').find({}, function (err, points) {
+		if(err) return next(err);
+		res.send(points);
+	});
+};
+
 exports.updatePoint = function (req, res) {
 	Point.findByIdAndUpdate(req.params.id, {$set: req.body}, function (err, point){
 		if(err) return next(err);
