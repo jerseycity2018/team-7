@@ -1,21 +1,40 @@
+// import { TransitionGroup, CSSTransition } from 'react-transition-group'
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import React, { Component } from 'react';
+import './Dot.css'
 
 class Dot extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            open: false
+            visible: false
         }
+        this.handleClick = this.handleClick.bind(this)
     };
 
-    toggleDropdown() {
-        this.setState({ open: !this.state.open });
+    handleClick() {
+        this.setState({ visible: ! this.state.visible });
     }
 
     render() {
         return (
-            <div>
-                
+            <div id="dot-container">
+                <div>
+                    <button id="dot" onClick={this.handleClick}>{this.state.visible ? 'X' : 'O'}</button>
+                    <ReactCSSTransitionGroup 
+                        transitionName="example"
+                        transitionEnterTimeout={500}
+                        transitionLeaveTimeout={300}
+                    >
+                        { 
+                            this.state.visible ? 
+                            <div className='panel'> 
+                            </div> 
+                            : null 
+                        }
+                            <h1 id="name"> {this.props.text} </h1>
+                    </ReactCSSTransitionGroup>
+                </div>
             </div>
         );
     }
