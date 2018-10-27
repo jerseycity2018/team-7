@@ -39,6 +39,10 @@ class Dot extends Component {
                                     </p>
                                 */}
                                     <h1 id="title"> {this.props.title} </h1>
+                                    <h2 id="category"> {this.props.category} </h2>
+                                    {
+                                        this.props.quantity > 0 && <p id="quantity"></p>
+                                    }
                                     <p id="time"> {this.props.time} </p>
                                     <img id="img" src={this.props.img}/>
                                     <p id="body">

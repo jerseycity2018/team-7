@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import GoogleMapReact from 'google-map-react';
 import config from './config.json';
-import data from './data';
+import { data } from './data';
 import axios from 'axios';
 import Dot from './Dot';
  
@@ -19,7 +19,7 @@ class Map extends Component {
     }
 
     componentDidMount() {
-        
+        console.log(data)
     }
 
   render() {
@@ -32,13 +32,22 @@ class Map extends Component {
           center={this.props.center}
           defaultZoom={this.props.zoom}
         >
-          <Dot
-            lat={59.955413}
-            lng={30.337844}
-            text={'Miguel Acero'}
-          />
+          {
+              data.map((item) => (
+                    <Dot
+                    lat={item.lat}
+                    lng={item.lng}
+                    title={item.title}
+                    category={item.category}
+                    quantity={item.quantity}
+                    time={item.time}
+                    img={item.img}
+                    body={item.body}
+                    text={item.name}
+                  />
+              ))
+          }
         </GoogleMapReact>
-
       </div>
       </center>
     );
