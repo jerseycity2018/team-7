@@ -10,7 +10,9 @@ exports.create = function (req, res) {
             userID: req.body.userID,
             name: req.body.name,
             password: req.body.password,
-            location: req.body.location
+            location: req.body.location,
+            lbs_recycled: 0,
+            upVotes: 0
         }
     );
 
