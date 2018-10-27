@@ -4,7 +4,7 @@ exports.test = function (req, res) {
 	res.send('Testing Point Controller');
 };
 
-exports.pointCreate = function (req, res) {
+exports.pointCreate = function (req, res, next) {
 	let point = new Point({
 		lat: req.body.lat,
 		lng: req.body.lng,
