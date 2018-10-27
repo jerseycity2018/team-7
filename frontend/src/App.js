@@ -17,7 +17,7 @@ import {
     geocodeByPlaceId,
     getLatLng,
 } from 'react-places-autocomplete';
-import Leaderboard from './Leaderboard';
+import Leaderboard from './leaderboard';
 import Profile from './Profile';
 import CreateDots from './CreateDots';
 // import FilterBar from './FilterBar';
