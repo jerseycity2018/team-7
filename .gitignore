@@ -1,5 +1,5 @@
 #maps api
-frontend/src/config.js
+frontend/src/config.json
 
 # mongo
 config.js
